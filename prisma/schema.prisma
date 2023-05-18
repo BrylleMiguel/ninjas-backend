@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Ninja {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name     String
+  nickname String?
+
+  weapons Weapon[]
+
+  @@map("ninjas")
+}
+
+enum AttackSpeed {
+  SLOW
+  AVG
+  INSTANT
+}
+
+model Weapon {
+  id      String  @id @default(uuid())
+  Ninja   Ninja?  @relation(fields: [ninjaId], references: [id])
+  ninjaId String?
+
+  name        String
+  damage      Float?       @default(0.00)
+  attackSpeed AttackSpeed?
+
+  @@map("weapons")
+}
+
+// weapon list -> render in frontend for users to make a weapon choice
+
+model Axe {
+  id   String @id @default(uuid())
+  name String @default("Axe")
+}

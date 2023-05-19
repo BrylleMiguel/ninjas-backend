@@ -15,9 +15,4 @@ export class NinjaController {
   async all() {
     return this.ninja.all();
   }
-
-  @Get('axe')
-  async axe() {
-    return this.ninja.axe();
-  }
 }

@@ -42,7 +42,7 @@ model Weapon {
 // a model to collect weapon list
 
 model WeaponList {
-  id String @id @default(uuid())
+  id String @id
 
   name        String
   damage      Float?  @default(0.00)

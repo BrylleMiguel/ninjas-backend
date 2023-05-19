@@ -26,8 +26,4 @@ export class NinjaService {
       },
     });
   }
-
-  axe() {
-    return this.prisma.axe.findMany({});
-  }
 }

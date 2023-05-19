@@ -14,36 +14,39 @@ model Ninja {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  weapons   Weapon[]
 
   name     String
   nickname String?
 
-  weapons Weapon[]
-
   @@map("ninjas")
 }
 
-enum AttackSpeed {
-  SLOW
-  AVG
-  INSTANT
-}
+// ______________WEAPONS_______________
 
 model Weapon {
-  id      String  @id @default(uuid())
-  Ninja   Ninja?  @relation(fields: [ninjaId], references: [id])
-  ninjaId String?
+  id String @id @default(uuid())
 
   name        String
-  damage      Float?       @default(0.00)
-  attackSpeed AttackSpeed?
+  damage      Float?  @default(0.00)
+  damageType  String? @default("Single")
+  attackSpeed String? @default("Slow") // slow, avg, instant
+  WeaponType  String? @default("Light") // light, heavy
+
+  Ninja   Ninja?  @relation(fields: [ninjaId], references: [id])
+  ninjaId String?
 
   @@map("weapons")
 }
 
-// weapon list -> render in frontend for users to make a weapon choice
+// a model to collect weapon list
 
-model Axe {
-  id   String @id @default(uuid())
-  name String @default("Axe")
+model WeaponList {
+  id String @id @default(uuid())
+
+  name        String
+  damage      Float?  @default(0.00)
+  damageType  String?
+  attackSpeed String?
+  weaponType  String?
 }

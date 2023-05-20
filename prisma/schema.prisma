@@ -14,27 +14,25 @@ model Ninja {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  weapons   Weapon[]
 
-  name     String
-  nickname String?
+  name            String
+  nickname        String?
+  primaryWeaponId PrimaryWeapon?
 
   @@map("ninjas")
 }
 
 // ______________WEAPONS_______________
 
-model Weapon {
-  id String @id @default(uuid())
-
+model PrimaryWeapon {
+  id          String  @id @default(uuid())
   name        String
   damage      Float?  @default(0.00)
   damageType  String? @default("Single")
   attackSpeed String? @default("Slow") // slow, avg, instant
-  WeaponType  String? @default("Light") // light, heavy
-
-  Ninja   Ninja?  @relation(fields: [ninjaId], references: [id])
-  ninjaId String?
+  weaponType  String? @default("Light") // light, heavy
+  ninja       Ninja   @relation(fields: [ninjaId], references: [id])
+  ninjaId     String  @unique
 
   @@map("weapons")
 }

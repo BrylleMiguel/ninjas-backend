@@ -1,11 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { WeaponListService } from './weapon-list.service';
 
-@Controller('weapon-list')
+@Controller('weapons')
 export class WeaponListController {
   constructor(private readonly weapon: WeaponListService) {}
   @Get()
   async all() {
-    return this.weapon.all();
+    return await this.weapon.all();
+  }
+
+  @Get('selected-weapon')
+  async selectedWeapon(@Query('name') name: string) {
+    if (name) {
+      return await this.weapon.selectedWeapon(name);
+    }
   }
 }

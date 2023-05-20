@@ -8,4 +8,10 @@ export class WeaponListService {
   all() {
     return this.prisma.weaponList.findMany({});
   }
+
+  selectedWeapon(name: string) {
+    return this.prisma.weaponList.findFirst({
+      where: { name },
+    });
+  }
 }

@@ -9,14 +9,15 @@ export class NinjaService {
     return this.prisma.ninja.create({
       data: {
         name: dto.name,
+        primaryWeapon: { create: dto.primaryWeapon },
+      },
+      include: {
+        primaryWeapon: true,
+      },
     });
   }
 
   all() {
-    return this.prisma.ninja.findMany({
-      include: {
-        weapon: true,
-      },
-    });
+    return this.prisma.ninja.findMany({});
   }
 }

@@ -9,12 +9,12 @@ export class NinjaService {
     return this.prisma.ninja.create({
       data: {
         name: dto.name,
-        weapons: {
-          createMany: { data: dto.weapons },
+        weapon: {
+          create: dto.weapon,
         },
       },
       include: {
-        weapons: true,
+        weapon: true,
       },
     });
   }
@@ -22,7 +22,7 @@ export class NinjaService {
   all() {
     return this.prisma.ninja.findMany({
       include: {
-        weapons: true,
+        weapon: true,
       },
     });
   }

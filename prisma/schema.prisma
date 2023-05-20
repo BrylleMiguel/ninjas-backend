@@ -15,9 +15,9 @@ model Ninja {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  name            String
-  nickname        String?
-  primaryWeaponId PrimaryWeapon?
+  name          String
+  nickname      String?
+  primaryWeapon PrimaryWeapon?
 
   @@map("ninjas")
 }

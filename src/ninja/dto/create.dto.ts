@@ -1,6 +1,6 @@
-import { Weapon } from '@prisma/client';
+import { PrimaryWeapon } from '@prisma/client';
 
 export class Create {
   name: string;
-  weapon: Weapon;
+  primaryWeapon: PrimaryWeapon;
 }

@@ -9,13 +9,6 @@ export class NinjaService {
     return this.prisma.ninja.create({
       data: {
         name: dto.name,
-        weapon: {
-          create: dto.weapon,
-        },
-      },
-      include: {
-        weapon: true,
-      },
     });
   }
 

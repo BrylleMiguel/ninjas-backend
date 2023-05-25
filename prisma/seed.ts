@@ -7,7 +7,7 @@ async function main() {
   const WEAPON_LIST = [
     {
       id: 'AXE-ID-000',
-      name: 'Axe',
+      name: 'axe',
       attackSpeed: 'Slow',
       damage: 7.83,
       damageType: 'MULTIPLE',
@@ -15,7 +15,7 @@ async function main() {
     },
     {
       id: 'LONG-SWORD-ID-000',
-      name: 'Long Sword',
+      name: 'long sword',
       attackSpeed: 'Avg',
       damage: 9.13,
       damageType: 'SINGLE_MULTIPLE',

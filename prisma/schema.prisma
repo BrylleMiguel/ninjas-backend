@@ -19,7 +19,7 @@ model Ninja {
   nickname      String?
   primaryWeapon PrimaryWeapon?
 
-  @@map("ninjas")
+  @@map("Ninjas")
 }
 
 // ______________WEAPONS_______________
@@ -33,6 +33,8 @@ model PrimaryWeapon {
   weaponType  String? @default("Light") // light, heavy
   ninja       Ninja   @relation(fields: [ninjaId], references: [id])
   ninjaId     String  @unique
+
+  @@map("Primary_Weapons")
 }
 
 // a model to collect weapon list

@@ -3,7 +3,7 @@ import { WeaponListService } from './weapon-list.service';
 
 @Controller('weapons')
 export class WeaponListController {
-  constructor(private readonly weapon: WeaponListService) {}
+  constructor(private weapon: WeaponListService) {}
   @Get()
   async all() {
     return await this.weapon.all();

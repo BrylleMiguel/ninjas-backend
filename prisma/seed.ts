@@ -15,7 +15,7 @@ async function main() {
     },
     {
       id: 'LONG-SWORD-ID-000',
-      name: 'long sword',
+      name: 'long-sword',
       attackSpeed: 'Avg',
       damage: 9.13,
       damageType: 'SINGLE_MULTIPLE',
@@ -24,9 +24,10 @@ async function main() {
   ];
 
   for (const weapon of WEAPON_LIST) {
-    const res = await prisma.weaponList.createMany({
-      data: weapon,
-      skipDuplicates: true,
+    const res = await prisma.weaponList.upsert({
+      where: { id: weapon.id },
+      create: weapon,
+      update: weapon,
     });
 
     console.log({ res });
@@ -40,6 +41,5 @@ main()
     process.exit(1);
   })
   .finally(async () => {
-    // close Prisma Client at the end
     await prisma.$disconnect();
   });

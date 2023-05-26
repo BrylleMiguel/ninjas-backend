@@ -31,7 +31,7 @@ model PrimaryWeapon {
   damageType  String? @default("Single")
   attackSpeed String? @default("Slow") // slow, avg, instant
   weaponType  String? @default("Light") // light, heavy
-  ninja       Ninja   @relation(fields: [ninjaId], references: [id])
+  ninja       Ninja   @relation(fields: [ninjaId], references: [id], onDelete: Cascade)
   ninjaId     String  @unique
 
   @@map("Primary_Weapons")

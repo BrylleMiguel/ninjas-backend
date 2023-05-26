@@ -18,6 +18,10 @@ export class NinjaService {
   }
 
   all() {
-    return this.prisma.ninja.findMany({});
+    return this.prisma.ninja.findMany({
+      include: {
+        primaryWeapon: true,
+      },
+    });
   }
 }

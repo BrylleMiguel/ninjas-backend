@@ -21,6 +21,14 @@ async function main() {
       damageType: 'SINGLE_MULTIPLE',
       weaponType: 'Heavy',
     },
+    {
+      id: 'BOW-ID-000',
+      name: 'bow',
+      attackSpeed: 'Avg',
+      damage: 3.13,
+      damageType: 'SINGLE',
+      weaponType: 'light',
+    },
   ];
 
   for (const weapon of WEAPON_LIST) {

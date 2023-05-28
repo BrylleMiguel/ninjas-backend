@@ -37,8 +37,6 @@ async function main() {
       create: weapon,
       update: weapon,
     });
-
-    console.log({ res });
   }
 }
 

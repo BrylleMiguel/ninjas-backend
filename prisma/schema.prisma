@@ -48,3 +48,14 @@ model WeaponList {
   attackSpeed String?
   weaponType  String?
 }
+
+//
+
+model CharacterList {
+  id                   String @id @default(uuid())
+  name                 String
+  element              String
+  resistancePercentage Float
+  bonusDamage          Float
+  bonusElementDamage   Float
+}

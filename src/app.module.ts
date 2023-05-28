@@ -1,10 +1,17 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { PrismaModule } from './prisma/prisma.module';
 import { NinjaModule } from './ninja/ninja.module';
-import { WeaponListModule } from './weapon-list/weapon-list.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { WeaponModule } from './weapon/weapon.module';
+import { CharacterModule } from './character/character.module';
 
 @Module({
-  imports: [PrismaModule, ConfigModule.forRoot({ isGlobal: true }), NinjaModule, WeaponListModule],
+  imports: [
+    PrismaModule,
+    ConfigModule.forRoot({ isGlobal: true }),
+    NinjaModule,
+    WeaponModule,
+    CharacterModule,
+  ],
 })
 export class AppModule {}

@@ -5,6 +5,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class SecondaryWeaponService {
   constructor(private prisma: PrismaService) {}
   all() {
-    return this.prisma.secondaryWeapon.findMany({});
+    return this.prisma.secondaryWeaponList.findMany({});
   }
 }

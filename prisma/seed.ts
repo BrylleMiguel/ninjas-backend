@@ -134,11 +134,11 @@ async function main() {
     console.log({ secondaries: res });
   }
 
-  for (const accesory of ACCESSORIES) {
+  for (const accessory of ACCESSORIES) {
     const res = await prisma.accessoryList.upsert({
-      where: { id: accesory.id },
-      create: accesory,
-      update: accesory,
+      where: { id: accessory.id },
+      create: accessory,
+      update: accessory,
     });
     console.log({ secondaries: res });
   }

@@ -18,6 +18,7 @@ model Ninja {
   name          String
   nickname      String?
   primaryWeapon PrimaryWeapon?
+  Pet           Pet?
 
   @@map("Ninjas")
 }
@@ -49,13 +50,30 @@ model WeaponList {
   weaponType  String?
 }
 
-//
+// characters
 
 model CharacterList {
-  id                   String @id @default(uuid())
+  id                   String  @id @default(uuid())
   name                 String
+  description          String?
   element              String
   resistancePercentage Float
   bonusDamage          Float
   bonusElementDamage   Float
+}
+
+// pets / companion
+
+model Pet {
+  id               String @id @default(uuid())
+  pet              String // dog, cat, crow, horse, carabao, rat
+  name             String
+  nickname         String
+  skill            String
+  skillDescription String
+
+  ninja   Ninja  @relation(fields: [ninjaId], references: [id], onDelete: Cascade)
+  ninjaId String @unique
+
+  @@map("pets")
 }

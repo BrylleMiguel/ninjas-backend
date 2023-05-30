@@ -5,5 +5,7 @@ import { SecondaryWeaponService } from './secondary-weapon.service';
 export class SecondaryWeaponController {
   constructor(private secondaryWeapon: SecondaryWeaponService) {}
   @Get('all')
-  async all() {}
+  async all() {
+    return this.secondaryWeapon.all();
+  }
 }

@@ -85,23 +85,62 @@ async function main() {
   const SECONDARY_WEAPON_LIST = [
     {
       id: 'SHURIKEN-ID',
-      name: 'Shuriken',
+      name: 'shuriken',
       damage: 1.99,
     },
     {
       id: 'KUNAI-ID',
-      name: 'Shuriken',
+      name: 'kunai',
       damage: 2.39,
     },
   ];
 
+  const ACCESSORIES = [
+    {
+      id: 'SMOKE-BOMB-ID',
+      name: 'smoke bomb',
+      type: 'smoke',
+      radius: 150, // units radius
+    },
+    {
+      id: 'SLEEPING-BOMB-ID',
+      name: 'sleeping bomb',
+      type: 'non-lethal',
+      radius: 100, // units radius
+    },
+    {
+      id: 'POISON-GAS-BOMB-ID',
+      name: 'poison bomb',
+      type: 'lethal',
+      radius: 130, // units radius
+    },
+  ];
+
   for (const weapon of WEAPON_LIST) {
-    const res = await prisma.weaponList.upsert({
+    const res = await prisma.primaryWeaponList.upsert({
       where: { id: weapon.id },
       create: weapon,
       update: weapon,
     });
-    console.log({ weapons: res });
+    console.log({ primaries: res });
+  }
+
+  for (const weapon of SECONDARY_WEAPON_LIST) {
+    const res = await prisma.secondaryWeaponList.upsert({
+      where: { id: weapon.id },
+      create: weapon,
+      update: weapon,
+    });
+    console.log({ secondaries: res });
+  }
+
+  for (const accesory of ACCESSORIES) {
+    const res = await prisma.accessoryList.upsert({
+      where: { id: accesory.id },
+      create: accesory,
+      update: accesory,
+    });
+    console.log({ secondaries: res });
   }
 
   for (const char of CHARACTER_LIST) {

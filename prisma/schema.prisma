@@ -15,15 +15,14 @@ model Ninja {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  name          String
-  nickname      String?
-  primaryWeapon PrimaryWeapon?
-  Pet           Pet?
+  name            String
+  nickname        String?
+  primaryWeapon   PrimaryWeapon?
+  SecondaryWeapon SecondaryWeapon?
+  Pet             Pet?
 
   @@map("Ninjas")
 }
-
-// ______________WEAPONS_______________
 
 model PrimaryWeapon {
   id          String  @id @default(uuid())
@@ -38,9 +37,33 @@ model PrimaryWeapon {
   @@map("Primary_Weapons")
 }
 
-// a model to collect weapon list
+// kunai, shuriken, kusarigama
+model SecondaryWeapon {
+  id     String @id @default(uuid())
+  name   String
+  damage Float
+  count  Int?
 
-model WeaponList {
+  ninja   Ninja  @relation(fields: [ninjaId], references: [id], onDelete: Cascade)
+  ninjaId String @unique
+
+  @@map("Secondary_Weapons")
+}
+
+// smoke bomb, sleeping bomb, poison bomb
+model Accessory {
+  id     String @id @default(uuid())
+  name   String
+  type   String
+  radius Float
+  count  Int?
+
+  @@map("Accessories")
+}
+
+// ______LIST_______
+
+model PrimaryWeaponList {
   id String @id
 
   name        String
@@ -50,7 +73,12 @@ model WeaponList {
   weaponType  String?
 }
 
-// characters
+model SecondaryWeaponList {
+  id String @id
+
+  name   String
+  damage Float? @default(0.00)
+}
 
 model CharacterList {
   id                   String  @id @default(uuid())
@@ -62,18 +90,25 @@ model CharacterList {
   bonusElementDamage   Float
 }
 
-// pets / companion
+model AccessoryList {
+  id     String @id @default(uuid())
+  name   String
+  type   String
+  radius Float
+}
+
+// ________PET_______
 
 model Pet {
-  id               String @id @default(uuid())
+  id               String  @id @default(uuid())
   pet              String // dog, cat, crow, horse, carabao, rat
   name             String
-  nickname         String
+  nickname         String?
   skill            String
-  skillDescription String
+  skillDescription String?
 
   ninja   Ninja  @relation(fields: [ninjaId], references: [id], onDelete: Cascade)
   ninjaId String @unique
 
-  @@map("pets")
+  @@map("Pets")
 }

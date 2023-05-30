@@ -4,6 +4,7 @@ import { NinjaModule } from './ninja/ninja.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { WeaponModule } from './weapon/weapon.module';
 import { CharacterModule } from './character/character.module';
+import { SecondaryWeaponModule } from './secondary-weapon/secondary-weapon.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { CharacterModule } from './character/character.module';
     NinjaModule,
     WeaponModule,
     CharacterModule,
+    SecondaryWeaponModule,
   ],
 })
 export class AppModule {}

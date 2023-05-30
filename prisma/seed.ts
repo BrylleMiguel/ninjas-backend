@@ -82,6 +82,19 @@ async function main() {
     },
   ];
 
+  const SECONDARY_WEAPON_LIST = [
+    {
+      id: 'SHURIKEN-ID',
+      name: 'Shuriken',
+      damage: 1.99,
+    },
+    {
+      id: 'KUNAI-ID',
+      name: 'Shuriken',
+      damage: 2.39,
+    },
+  ];
+
   for (const weapon of WEAPON_LIST) {
     const res = await prisma.weaponList.upsert({
       where: { id: weapon.id },

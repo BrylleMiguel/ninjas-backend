@@ -116,6 +116,39 @@ async function main() {
     },
   ];
 
+  const PETS = [
+    {
+      id: 'CANINE-ID',
+      pet: 'canine',
+      name: 'shadow paw',
+      skill: 'track enemies and detect imminent danger.',
+    },
+    {
+      id: 'FELINE-ID',
+      pet: 'feline',
+      name: 'seiji',
+      skill: 'steals loot and harvest resources',
+    },
+    {
+      id: 'AVIAN-ID',
+      pet: 'avian',
+      name: 'shadow wing',
+      skill: 'Provides aerial reconnaissance and scouting.',
+    },
+    {
+      id: 'QUADRUPED-ID',
+      pet: 'quadruped',
+      name: 'storm hoof',
+      skill: 'can create its own path and can carry heavy resources',
+    },
+    {
+      id: 'RODENT-ID',
+      pet: 'rodent',
+      name: 'stealthy',
+      skill: 'throws accessory items discreetly on command',
+    },
+  ];
+
   for (const weapon of WEAPON_LIST) {
     const res = await prisma.primaryWeaponList.upsert({
       where: { id: weapon.id },
@@ -150,6 +183,16 @@ async function main() {
       update: char,
     });
     console.log({ characters: res });
+  }
+
+  for (const pet of PETS) {
+    const res = await prisma.petList.upsert({
+      where: { id: pet.id },
+      create: pet,
+      update: pet,
+    });
+
+    console.log({ res });
   }
 }
 

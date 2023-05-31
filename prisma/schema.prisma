@@ -112,3 +112,12 @@ model Pet {
 
   @@map("Pets")
 }
+
+model PetList {
+  id               String  @id @default(uuid())
+  pet              String
+  name             String
+  nickname         String?
+  skill            String
+  skillDescription String?
+}

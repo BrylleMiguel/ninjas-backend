@@ -19,6 +19,7 @@ model Ninja {
   nickname        String?
   primaryWeapon   PrimaryWeapon?
   SecondaryWeapon SecondaryWeapon?
+  Accessory       Accessory?
   Pet             Pet?
 
   @@map("Ninjas")
@@ -52,11 +53,13 @@ model SecondaryWeapon {
 
 // smoke bomb, sleeping bomb, poison bomb
 model Accessory {
-  id     String @id @default(uuid())
-  name   String
-  type   String
-  radius Float
-  count  Int?
+  id      String @id @default(uuid())
+  name    String
+  type    String
+  radius  Float
+  count   Int?
+  ninja   Ninja  @relation(fields: [ninjaId], references: [id], onDelete: Cascade)
+  ninjaId String @unique
 
   @@map("Accessories")
 }

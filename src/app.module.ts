@@ -6,6 +6,7 @@ import { PrimaryWeaponModule } from './primary-weapon/primary-weapon.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { SecondaryWeaponModule } from './secondary-weapon/secondary-weapon.module';
 import { AccessoryModule } from './accessory/accessory.module';
+import { PetModule } from './pet/pet.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AccessoryModule } from './accessory/accessory.module';
     CharacterModule,
     SecondaryWeaponModule,
     AccessoryModule,
+    PetModule,
   ],
 })
 export class AppModule {}
